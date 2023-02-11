@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -13,7 +11,6 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template('index.html')
-
 
 @app.route("/registration", methods=["POST"])
 def webtoon_post():
@@ -33,6 +30,42 @@ def webtoon_post():
     db.webtoon.insert_one(doc)
 
     return jsonify({'msg':'업로드 성공'})
+
+@app.route("/user", methods=["POST"])
+def newUser_post():
+    id_receive = request.form['id_give']
+    password_receive = request.form['password_give']
+    sex_receive = request.form['sex_give']
+    name_receive = request.form['name_give']
+
+    doc = {
+        'id' : id_receive,
+        'password' : password_receive,
+        'name' : name_receive,
+        'sex' : sex_receive
+    }
+    db.user.insert_one(doc)
+    
+    return jsonify({'msg':'회원가입 성공'})
+
+
+@app.route("/user/login", methods=["POST"])
+def login_post():
+    id_receive = request.form['id_give']
+    password_give = request.form['password_give']
+
+    checkLogin = db.user.find_one({'id':id_receive})
+    
+
+    if checkLogin == None :
+        is_success = "실패"
+    elif checkLogin['password'] == password_give :
+        is_success = "성공"
+    
+    userName = checkLogin['name']
+    # print(checkLogin)
+    return jsonify({'msg': '로그인 성공', 'is_success' : is_success, 'userName' : userName})
+
 
 
 if __name__ == '__main__':
