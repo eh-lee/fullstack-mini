@@ -16,6 +16,7 @@
         crossorigin="anonymous"></script>
 
     <link href="ym.css" rel="stylesheet">
+    <link href="eh.css" rel="stylesheet">
     <title>Team 16</title>
 </head>
 
@@ -49,7 +50,30 @@
     </nav>
     <header>
     </header>
+
+    <div class="eh-post" onclick="open_box()"></div>
+    <div class="eh-specPost" id="post-box">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">별점</label>
+            <select class="form-select" id="score">
+                <option selected>-- 선택하기 --</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+        </div>
+        <div class="form-floating">
+            <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea2">코멘트</label>
+        </div>
+        <div class="eh-btns">
+            <button onclick="scoring()" type="button" class="btn btn-dark">기록하기</button>
+            <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="ym.js"></script>
-
+<script type="text/javascript" src="eh.js"></script>
 </html>

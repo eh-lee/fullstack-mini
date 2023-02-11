@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+
+
+    <title>16조 풀스택미니</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+
+        .title {
+            width: 100%;
+            height: 150px;
+            background-color: wheat;
+        }
+
+        .post {
+            width: 250px;
+            margin: 20px auto 0px auto;
+            height: 300px;
+            box-shadow: 0px 0px 3px 0px gray;
+
+
+        }
+
+        .specPost {
+            width: 1100px;
+            height: 300px;
+            margin: 20px auto 0px auto;
+            box-shadow: 0px 0px 3px 0px gray;
+
+            display: none;
+        }
+
+        .btns {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+        }
+
+        .btns>button {
+            margin-right: 10px;
+        }
+    </style>
+
+
+    <script>
+        // function scoring() {
+        //     let url = $('#url').val()
+        //     let score = $('#score').val()
+        //     let comment = $('#comment').val()
+
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '/',
+        //         data: { url_give: url, score_give: score, comment_give: comment },
+        //         success: function (response) {
+        //             alert(response['msg'])
+        //             window.location.reload()
+        //         }
+        //     });
+        // }
+
+        function open_box() {
+            $('#post-box').show()
+        }
+        function close_box() {
+            $('#post-box').hide()
+        }
+    </script>
+</head>
+
+
+
+
+<body>
+<!--이하 디브들은 어디에 붙여야 하나요?...  -->
+    <div class="title">
+        <h1>16조</h1>
+    </div>
+    <div class="eh-post" onclick="open_box()"></div>
+    <div class="eh-specPost" id="post-box">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">별점</label>
+            <select class="form-select" id="score">
+                <option selected>-- 선택하기 --</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+        </div>
+        <div class="form-floating">
+            <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea2">코멘트</label>
+        </div>
+        <div class="eh-btns">
+            <button onclick="scoring()" type="button" class="btn btn-dark">기록하기</button>
+            <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
+        </div>
+    </div>
+</body>
+
+</html>
