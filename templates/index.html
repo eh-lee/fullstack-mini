@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,9 +19,122 @@
     <link href="{{ url_for('static', filename='css/ym.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/eh.css') }}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/jh_webtoonList.css')}}" rel="stylesheet">
+    <style>
+        /* * {
+            font-family: 'Gowun Dodum', sans-serif;
+        } */
+
+        .move2 {
+            position: fixed;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+
+        }
+
+        .move {
+            position: fixed;
+            width: 100px;
+            margin-top: 800px;
+            margin-left: 1800px;
+
+        }
+
+        .buttn {
+            width: 100px;
+            height: 100px;
+            font-weight: bold;
+            font-size: 19px;
+
+            background-color: orange;
+            color: black;
+
+            border-radius: 5px;
+            border: 1px solid white;
+
+        }
+
+
+        .mycards {
+            margin: 20px auto 0px auto;
+            width: 95%;
+            max-width: 1200px;
+        }
+
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+            background-color: white;
+            border-radius: 5px;
+
+            display: none;
+        }
+
+        .mybtns {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+        }
+
+        .mybtns>button {
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function posting() {
+            let url = $('#url').val()
+            let star = $('#star').val()
+            let comment = $('#comment').val()
+
+            $.ajax({
+                type: 'POST',
+                url: '/registration',
+                data: { url_give: url, star_give: star, comment_give: comment },
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+
+        function nw_open_box() {
+            $('#post-box').show()
+        }
+        function nw_close_box() {
+            $('#post-box').hide()
+        }
+
+        function eh_open_box() {
+            $('#post-box2').show()
+        }
+        function close_box() {
+            $('#post-box2').hide()
+        }
+        document.getElementById('box-close').addEventListener('click',function(){
+            $('.modal-detail').addClass('ym-hide')
+        })
+    </script>
+
     <title>Team 16</title>
 </head>
+
 <body>
+    <!-- <div class="modal-detail">
+        <div class="modal-detail-box">
+            <img src="/trash_tn_1.jpg" width="400">
+            <p>${title} | ${author}</p>
+            <p> 평균 별점: 4.1/5.0 </p>
+            <p>${desc}</p>
+            <button>등록</button>
+            <button id="box-close">닫기</button>
+        </div>
+    </div> -->
     <div class="ym-modal-join ym-hide">
         <div class="ym-modal-contents">
             <div class="join-box">
@@ -61,6 +175,40 @@
             </div>
         </div>
     </div>
+    <div class="move">
+        <button class="buttn" onclick="nw_open_box()">웹툰 등록</button>
+    </div>
+    <div class="move2">
+        <div class="mypost" id="post-box">
+            <div class="form-floating mb-3">
+                <input id="url" type="email" class="form-control" placeholder="name@example.com">
+                <label>웹툰URL</label>
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">평점</label>
+                <select class="form-select" id="star">
+                    <option selected>-- 선택하기 --</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
+            <div class="form-floating">
+                <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+                <label for="floatingTextarea2">코멘트</label>
+            </div>
+            <div class="mybtns">
+                <button onclick="posting()" type="button" class="btn btn-dark">확인</button>
+                <button onclick="nw_close_box()" type="button" class="btn btn-outline-dark">취소</button>
+            </div>
+        </div>
+        <div class="mycards">
+            <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
+            </div>
+        </div>
+    </div>
 
     <!--  -->
     <nav class="nav-default">
@@ -87,7 +235,7 @@
     </header>
 
     <!-- 웹툰 리스트 -->
-    <div class="eh-cont" >
+    <div class="eh-cont">
         <div id="webtoons-container">
             <div id="webtoons-content">
                 <section id="webtoons">
@@ -99,30 +247,78 @@
         </div>
     </div>
 
-    <div class="eh-specCont" id="post-box">
+    <div class="eh-specCont" id="post-box2">
         <div class="eh-cards" id="comment-list">
         </div>
-        <div class="form-floating">
-            <select class="form-select" id="star" aria-label="Floating label select example">
-                <option selected>별점 선택</option>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-            </select>
-            <label for="floatingSelect">별점을 선택해 주세요</label>
+
+        <div id="eh-lined" class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div>
+                        <a href="https://comic.naver.com/webtoon/detail?titleId=805702&no=1">
+                            <img src="/trash_tn_1.jpg" width="400">
+                        </a>
+                        <p>${title} | ${author}</p>
+                        <p> 평균 별점: 4.1/5.0 </p>
+                        <p>${desc}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div id="feat">
+                    <p></p>
+                    <div class="eh-specCont" id="post-box2">
+                        <div class="eh-cards" id="comment-list">
+                            <!-- show_commenting()예시 -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p>${comment}</p>
+                                        <footer class="blockquote-footer">${star_image}</footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p>${comment}</p>
+                                        <footer class="blockquote-footer">${star_image}</footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p>${comment}</p>
+                                        <footer class="blockquote-footer">${star_image}</footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="form-floating">
+                            <select class="form-select" id="star" aria-label="Floating label select example">
+                                <option selected>별점 선택</option>
+                                <option value="1">⭐</option>
+                                <option value="2">⭐⭐</option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="5">⭐⭐⭐⭐⭐</option>
+                            </select>
+                        </div>
+                        <div class="form-floating">
+                            <textarea id="comment" class="form-control" placeholder="댓글을 작성해 주세요"></textarea>
+                        </div>
+                        <div class="eh-btns">
+                            <button onclick="commenting()" type="button" class="btn btn-primary">기록하기</button>
+                            <button onclick="close_box()" type="button" class="btn btn-primary">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-floating">
-            <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
-            <label for="floatingTextarea2">댓글</label>
-        </div>
-        <div class="eh-btns">
-            <button onclick="commenting()" type="button" class="btn btn-primary">기록하기</button>
-            <button onclick="close_box()" type="button" class="btn btn-primary">닫기</button>
-        </div>
-    </div>
 </body>
 <script type="text/javascript" src="{{ url_for('static', filename='js/ym.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/eh.js') }}"></script>
+
 </html>

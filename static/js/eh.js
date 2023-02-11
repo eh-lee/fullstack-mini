@@ -45,9 +45,9 @@ function show_commenting() {
     })
 }
 
-function open_box() {
-    $('#post-box').show()
+function eh_open_box() {
+    $('#post-box2').show()
 }
 function close_box() {
-    $('#post-box').hide()
+    $('#post-box2').hide()
 }

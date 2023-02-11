@@ -174,3 +174,27 @@ header{
     background-color: green;
     height: 800px;
 }
+.modal-detail{
+    position: fixed;
+    width:100vw;
+    height:100vw;
+    top:0px;
+    left:0px;
+    z-index: 50;
+    background-color: rgba(0,0,0,0.8);
+}
+.modal-detail-box{
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top:50%;
+    left:50%;
+    transform: translate(-200px,-200px);
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 6px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

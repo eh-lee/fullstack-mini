@@ -15,24 +15,6 @@ app = Flask(__name__,static_folder="./static/")
 def home():
     return render_template('index.html')
 
-@app.route("/registration", methods=["POST"])
-def webtoon_post():
-    url_receive = request.form['url_give']
-    star_receive = request.form['star_give']
-    comment_receive = request.form['comment_give']
-
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get(url_receive, headers=headers)
-
-    doc = {
-        'star':star_receive,
-        'comment':comment_receive
-    }
-    db.webtoon.insert_one(doc)
-
-    return jsonify({'msg':'업로드 성공'})
-
 @app.route('/webtoon-list', methods=["GET"])
 def webtoon_list():
     url_receive = list(db.webtoon.find({}, {'_id':False}))
@@ -116,6 +98,26 @@ def comment_post():
 def comment_get():
     comment_list = list(db.test.find({},{'_id': False}))
     return jsonify({'comments':comment_list})
+
+@app.route("/registration", methods=["POST"])
+def webtoon_post():
+    url_receive = request.form['url_give']
+    star_receive = request.form['star_give']
+    comment_receive = request.form['comment_give']
+
+    # headers = {
+    #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    # data = requests.get(url_receive, headers=headers)
+
+    doc = {
+        'star':star_receive,
+        'comment':comment_receive,
+        'url':url_receive
+    }
+    db.webtoon.insert_one(doc,{'_id':False})
+
+    return jsonify({'msg':'업로드 성공'})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
