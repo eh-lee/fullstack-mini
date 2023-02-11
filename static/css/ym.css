@@ -1,23 +1,29 @@
 *{
     font-family: 'Noto Sans KR', sans-serif;
 }
+body{
+    width: 100vw;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 .ym-modal-join{
-    position: absolute;
-    width:100%;
-    height: 100%;
+    position: fixed;
+    width:100vw;
+    height: 100vw;
     z-index: 50;
     background-color: rgba(0,0,0,0.8);
 }
 .ym-modal-contents{
     display: flex;
     width: 500px;
-    height: 400px;
+    height: 300px;
     border-radius: 20px;
     box-shadow: 0px 0px 20px white;
     background-color: white;
-    position: relative;
+    position: fixed;
     top: 50%;
-    transform: translateY(-200px);
+    left: 50%;
+    transform: translate(-250px,-150px);
     margin:auto;
     flex-direction: column;
     justify-content: center;
@@ -25,29 +31,59 @@
 }
 .join-box{
     width: 80%;
-    height:250px;
-    background-color: green;
+    height:auto;
+    /* background-color: green; */
+}
+.rows{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.rows>input{
+    box-shadow: 0px 0px 3px gray;
+    font-size: smaller;
+    width:200px;
+    border: 1px solid black;
+}
+.div-radio>div{
+    display: inline-block;
+    margin-left: 50px;
 }
 .join-box-btnGroup{
     width: 80%;
     height: auto;
     margin-top: 15px;
-    background-color: red;
+    /* background-color: red; */
     text-align: right;
 }
 .join-box-btnGroup>span{
     display: inline-block;
     border: 1px solid black;
+    width:100px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
 }
-nav{
+.join-box-btnGroup>span:hover{
+    border: 1px solid white;
+    background-color: gray;
+    color: white;
+}
+.nav-default{
     width:100%;
     height:50px;
     background-color: #0d6efd;
 }
-
+.nav-fix{
+    position: fixed;
+    top:0px;
+    left:0px;
+    z-index: 40;
+}
 .logo{
     color: white;
-    font-size: 140%;
+    font-size:x-large;
     font-weight: bold;
     text-shadow: 2px 2px 6px gray;
     cursor: pointer;
@@ -73,12 +109,17 @@ nav{
     color: white;
     font-weight:lighter;
     cursor: pointer;
+    padding: 5px;
+    border : 1px solid white;
+    border-radius: 5px;
 }
 .nav-btn:hover{
     font-size: smaller;
-    color: white;
+    color: black;
     font-weight:bold;
     cursor: pointer;
+    border : 1px solid black;
+    background-color: yellow;
 }
 .nav-contents{
     width: 1100px;
@@ -89,6 +130,9 @@ nav{
 }
 .nav-contents>.contents-box{
     margin : auto 0px;
+}
+.nav-btn{
+    transform: all 0s;
 }
 .welcome{
     display: none;
@@ -101,15 +145,32 @@ nav{
 .right{
     display: block;
 }
-
+#user{
+    font-weight: bold;
+    color: yellow;
+}
 #userPW{
     margin-right: 15px;
 }
 
 header{
-    width:100%;
+    width: 100vw;
     height: 600px;
-    background-image: url("../back3.jpg");
-    background-size: cover;
-    /* background-repeat: no-repeat; */
+    /* background-image: url("/static/1.jpg"); */
+    overflow: hidden;
+}
+.hd-img{
+    height:600px;
+}
+.hd-div{
+    width:200vw;
+    overflow: hidden;
+}
+.move-img{
+    transition: all 200s;
+    transform:translateX(-100vw)
+}
+.empty-div{
+    background-color: green;
+    height: 800px;
 }

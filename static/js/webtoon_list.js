@@ -24,16 +24,18 @@ $(document).ready(function () {
                     console.log(img, url, title, genre, desc);
 
                     var temp_html =
-                        `<li>
-                            <a href="${url}">
-                                <div class="webtoon-box">
-                                    <img src="${img}" alt="웹툰 이미지">
-                                    <h6>${title}</h6>
-                                    <span>${genre}</span>
-                                    <p>${desc}</p>
-                                </div>
-                            </a>
-                        </li>`;
+                        `<div className="eh-cont" onClick="open_box()">
+                            <li>
+                                <a href="${url}">
+                                    <div class="webtoon-box">
+                                        <img src="${img}" alt="웹툰 이미지">
+                                        <h6>${title}</h6>
+                                        <span>${genre}</span>
+                                        <p>${desc}</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>`;
 
                     $('#webtoons-list').append(temp_html);
                 }

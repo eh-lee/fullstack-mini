@@ -24,22 +24,51 @@
 
     <title>Team 16</title>
 </head>
-
 <body>
     <div class="ym-modal-join ym-hide">
         <div class="ym-modal-contents">
             <div class="join-box">
-                d
+                <div class="rows">
+                    <span class="rows-span">ID:</span>
+                    <input class="rows-input" id="submit-id">
+                </div>
+                <div class="rows">
+                    <span class="rows-span">Password:</span>
+                    <input type="password" class="rows-input" id="submit-pw">
+                </div>
+                <div class="rows">
+                    <span class="rows-span">이름:</span>
+                    <input type="text" class="rows-input" id="submit-name">
+                </div>
+                <div class="rows">
+                    <span class="rows-span">성별:</span>
+                    <div class="div-radio">
+                        <div>
+                            <input class="form-check-input" type="radio" name="join-radio" id="male" value="남자">
+                            <label class="form-check-label" for="male">
+                                남자
+                            </label>
+                        </div>
+                        <div>
+                            <input class="form-check-input" type="radio" name="join-radio" id="female" value="여자"
+                                checked>
+                            <label class="form-check-label" for="female">
+                                여자
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="join-box-btnGroup">
-                <span>확인</span>
-                <span>닫기</span>
+                <span id="submit-join">가입하기</span>
+                <span id="close-join">닫기</span>
             </div>
         </div>
+
     </div>
-    <nav>
+    <nav class="nav-default">
         <div class="nav-contents">
-            <span class="contents-box logo">WEBTOONS</span>
+            <span class="contents-box logo" id="btn-logo">WEBTOONS</span>
             <div class="contents-box right">
                 <div class="nav-input-box">
                     <input class="nav-input" type="text" id="userID" placeholder="ID" />
@@ -47,21 +76,52 @@
                 </div>
                 <span class="welcome" id="user"></span>
                 <span class="welcome">님 환영합니다!</span>
-                <span class="nav-btn" id="login">로그인</span>
-                <span class="nav-btn" id="join">회원가입</span>
-                <span class="nav-btn ym-hide" id="logout">로그아웃</span>
+                <span class="nav-btn" id="login">LOGIN</span>
+                <span class="nav-btn" id="join">Join us</span>
+                <span class="nav-btn ym-hide" id="logout">LOGOUT</span>
             </div>
         </div>
     </nav>
     <header>
+        <div class="hd-div">
+            <img class="hd-img" src="{{ url_for('static', filename='bg_1.jpg') }}" />
+            <img class="hd-img" src="{{ url_for('static', filename='bg_2.jpg') }}" />
+        </div>
     </header>
 
-    <div id="webtoons-container">
-        <div id="webtoons-content">
-            <section id="webtoons">
-                <ul id="webtoons-list">
-                </ul>
-            </section>
+    <!-- <div class="empty-div"></div> -->
+    <div class="eh-cont" onclick="open_box()">
+        <div id="webtoons-container">
+            <div id="webtoons-content">
+                <section id="webtoons">
+                    <ul id="webtoons-list">
+                        <!-- 웹툰 리스트 -->
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="eh-specCont" id="post-box">
+        <div class="eh-cards" id="comment-list">
+        </div>
+        <div class="form-floating">
+            <select class="form-select" id="star" aria-label="Floating label select example">
+                <option selected>별점 선택</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+            <label for="floatingSelect">별점을 선택해 주세요</label>
+        </div>
+        <div class="form-floating">
+            <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea2">댓글</label>
+        </div>
+        <div class="eh-btns">
+            <button onclick="commenting()" type="button" class="btn btn-primary">기록하기</button>
+            <button onclick="close_box()" type="button" class="btn btn-primary">닫기</button>
         </div>
     </div>
 

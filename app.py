@@ -15,7 +15,6 @@ app = Flask(__name__,static_folder="./static/")
 def home():
     return render_template('index.html')
 
-
 @app.route("/registration", methods=["POST"])
 def webtoon_post():
     url_receive = request.form['url_give']
@@ -68,6 +67,55 @@ def webtoon_list():
 
     print(webtoon_list)
     return jsonify({'webtoon-list':webtoon_list})
+
+@app.route("/user", methods=["POST"])
+def newUser_post():
+    id_receive = request.form['id_give']
+    password_receive = request.form['password_give']
+    sex_receive = request.form['sex_give']
+    name_receive = request.form['name_give']
+
+    doc = {
+        'id' : id_receive,
+        'password' : password_receive,
+        'name' : name_receive,
+        'sex' : sex_receive
+    }
+    db.user.insert_one(doc)
+    
+    return jsonify({'msg':'회원가입 성공'})
+
+@app.route("/user/login", methods=["POST"])
+def login_post():
+    id_receive = request.form['id_give']
+    password_give = request.form['password_give']
+
+    checkLogin = db.user.find_one({'id':id_receive},{'_id':False})
+    
+    if checkLogin == None :
+        is_success = "실패"
+    elif checkLogin['password'] == password_give :
+        is_success = "성공"
+    
+    userName = checkLogin['name']
+    # print(checkLogin)
+    return jsonify({'msg': '로그인 성공', 'is_success' : is_success, 'userName' : userName})
+
+@app.route("/test", methods=["POST"])
+def comment_post():
+    star_receive = request.form['star_give']
+    comment_receive = request.form['comment_give']
+    doc = {
+        'star': star_receive,
+        'comment': comment_receive
+    }
+    db.test.insert_one(doc)
+    return jsonify({'msg':'완료!'})
+
+@app.route("/test/comment", methods=["GET"])
+def comment_get():
+    comment_list = list(db.test.find({},{'_id': False}))
+    return jsonify({'comments':comment_list})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
