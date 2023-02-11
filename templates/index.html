@@ -84,7 +84,65 @@
             <img class="hd-img" src="{{ url_for('static', filename='bg_2.jpg') }}" />
         </div>
     </header>
-    <div class="empty-div"></div>
+    <!-- <div class="empty-div"></div> -->
+    <div class="eh-cont" onclick="open_box()">
+        <div class="row row-cols-4">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">예시</div>
+                <div class="card-body">
+                    <h5 class="card-title">예시</h5>
+                    <p class="card-text">예시</p>
+                </div>
+            </div>
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">예시</div>
+                <div class="card-body">
+                    <h5 class="card-title">예시</h5>
+                    <p class="card-text">예시</p>
+                </div>
+            </div>
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">예시</div>
+                <div class="card-body">
+                    <h5 class="card-title">예시</h5>
+                    <p class="card-text">예시</p>
+                </div>
+            </div>
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">예시</div>
+                <div class="card-body">
+                    <h5 class="card-title">예시</h5>
+                    <p class="card-text">예시</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="eh-specCont" id="post-box">
+        <div class="eh-cards" id="comment-list">
+        </div>
+        <div class="form-floating">
+            <select class="form-select" id="star" aria-label="Floating label select example">
+                <option selected>별점 선택</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+            <label for="floatingSelect">별점을 선택해 주세요</label>
+        </div>
+        <div class="form-floating">
+          <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+          <label for="floatingTextarea2">댓글</label>
+        </div>
+        <div class="eh-btns">
+            <button onclick="commenting()" type="button" class="btn btn-primary">기록하기</button>
+            <button onclick="close_box()" type="button" class="btn btn-primary">닫기</button>
+        </div>
+    </div>
+
 </body>
 <script type="text/javascript" src="{{ url_for('static', filename='js/ym.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/eh.js') }}"></script>
