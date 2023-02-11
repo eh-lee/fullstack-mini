@@ -6,6 +6,7 @@
 
 let is_logon = localStorage.getItem("log")
 
+// console.log(window.outerWidth)
 $(document).ready(function () {
     console.log(is_logon)
     if (is_logon == "true") {
@@ -22,7 +23,18 @@ $(document).ready(function () {
         $('.nav-btn').toggle('.ym-hide')
     } else if (is_logon == "false") {
     }
+    document.getElementsByClassName('hd-div')[0].classList.add('move-img')
+});
 
+// scroll event
+window.addEventListener('scroll', function() {
+    if(window.scrollY>=50){
+        // document.getElementsByClassName('nav-default').classList.add('nav-fix')
+        $('.nav-default').addClass('nav-fix')
+    } else if(window.scrollY<50){
+        $('.nav-default').removeClass('nav-fix')
+    }
+    // console.log(this.scrollY)
 });
 
 // Log-in

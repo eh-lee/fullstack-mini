@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-    <nav>
+    <nav class="nav-default">
         <div class="nav-contents">
             <span class="contents-box logo">WEBTOONS</span>
             <div class="contents-box right">
@@ -77,7 +77,12 @@
         </div>
     </nav>
     <header>
+        <div class="hd-div">
+            <img class="hd-img" src="{{ url_for('static', filename='bg_1.jpg') }}" />
+            <img class="hd-img" src="{{ url_for('static', filename='bg_2.jpg') }}" />
+        </div>        
     </header>
+    <footer><span>16조 : 이은형 박성동 이주희 김용민</span></footer>
 </body>
 <script type="text/javascript" src="{{ url_for('static', filename='js/ym.js') }}"></script>
 

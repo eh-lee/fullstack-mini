@@ -54,9 +54,8 @@ def login_post():
     id_receive = request.form['id_give']
     password_give = request.form['password_give']
 
-    checkLogin = db.user.find_one({'id':id_receive})
+    checkLogin = db.user.find_one({'id':id_receive},{'_id':False})
     
-
     if checkLogin == None :
         is_success = "실패"
     elif checkLogin['password'] == password_give :
