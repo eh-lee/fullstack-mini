@@ -31,10 +31,10 @@ document.getElementById('btn-logo').addEventListener('click', function () {
 
 // scroll event
 window.addEventListener('scroll', function () {
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 55) {
         // document.getElementsByClassName('nav-default').classList.add('nav-fix')
         $('.nav-default').addClass('nav-fix')
-    } else if (window.scrollY < 50) {
+    } else if (window.scrollY < 55) {
         $('.nav-default').removeClass('nav-fix')
     }
     // console.log(this.scrollY)
