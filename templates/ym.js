@@ -1,3 +1,5 @@
+
+// Log-in
 document.getElementById('login').addEventListener('click', function () {
     var ID = document.getElementById("userID").value
     var PW = document.getElementById("userPW").value
@@ -29,7 +31,7 @@ document.getElementById('login').addEventListener('click', function () {
 
 })
 
-
+// Log-out
 document.getElementById('logout').addEventListener('click',function(){
     $('.nav-btn').toggle('ym-hide')
     $('.nav-input-box').toggle('ym-hide')
@@ -38,6 +40,8 @@ document.getElementById('logout').addEventListener('click',function(){
     document.getElementsByClassName('welcome')[1].style.display="none"
 })
 
-document.getElementById('join').addEventListener('click', function () {
 
+// Join us
+document.getElementById('join').addEventListener('click', function () {
+    
 })
