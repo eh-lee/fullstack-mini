@@ -65,6 +65,22 @@ def login_post():
     # print(checkLogin)
     return jsonify({'msg': '로그인 성공', 'is_success' : is_success, 'userName' : userName})
 
+@app.route("/test", methods=["POST"])
+def comment_post():
+    star_receive = request.form['star_give']
+    comment_receive = request.form['comment_give']
+    doc = {
+        'star': star_receive,
+        'comment': comment_receive
+    }
+    db.test.insert_one(doc)
+    return jsonify({'msg':'완료!'})
+
+@app.route("/test/comment", methods=["GET"])
+def comment_get():
+    comment_list = list(db.test.find({},{'_id': False}))
+    return jsonify({'comments':comment_list})
+
 
 
 if __name__ == '__main__':
