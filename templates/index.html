@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,13 +14,10 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='js/webtoon_list.js')}}"></script>
-    <script src="{{url_for('static', filename='js/ym.js')}}"></script>
-    <script src="{{url_for('static', filename='js/eh.js')}}"></script>
 
-    <link href="{{url_for('static', filename='css/ym.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename='css/eh.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/ym.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/eh.css') }}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/jh_webtoonList.css')}}" rel="stylesheet">
-
     <title>Team 16</title>
 </head>
 <body>
@@ -64,8 +60,9 @@
                 <span id="close-join">닫기</span>
             </div>
         </div>
-
     </div>
+
+    <!--  -->
     <nav class="nav-default">
         <div class="nav-contents">
             <span class="contents-box logo" id="btn-logo">WEBTOONS</span>
@@ -89,18 +86,19 @@
         </div>
     </header>
 
-    <!-- <div class="empty-div"></div> -->
-    <div class="eh-cont" onclick="open_box()">
+    <!-- 웹툰 리스트 -->
+    <div class="eh-cont" >
         <div id="webtoons-container">
             <div id="webtoons-content">
                 <section id="webtoons">
                     <ul id="webtoons-list">
-                        <!-- 웹툰 리스트 -->
+                        <!-- 웹툰 리스트 데이터 들어오는 곳 -->
                     </ul>
                 </section>
             </div>
         </div>
     </div>
+
     <div class="eh-specCont" id="post-box">
         <div class="eh-cards" id="comment-list">
         </div>
@@ -124,30 +122,7 @@
             <button onclick="close_box()" type="button" class="btn btn-primary">닫기</button>
         </div>
     </div>
-
-    <div class="eh-post" onclick="open_box()"></div>
-    <div class="eh-specPost" id="post-box">
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">별점</label>
-            <select class="form-select" id="score">
-                <option selected>-- 선택하기 --</option>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-            </select>
-        </div>
-        <div class="form-floating">
-            <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
-            <label for="floatingTextarea2">코멘트</label>
-        </div>
-        <div class="eh-btns">
-            <button onclick="scoring()" type="button" class="btn btn-dark">기록하기</button>
-            <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
-        </div>
-    </div>
 </body>
-<script type="text/javascript" src="../static/js/ym.js"></script>
-<script type="text/javascript" src="../static/js/eh.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/ym.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/eh.js') }}"></script>
 </html>

@@ -1,27 +1,21 @@
+ol, ul, li, a {
+  list-style: none;
+}
+
 a {
   color: black;
   text-decoration: none;
   outline: none;
 }
 
-menu, ol, ul, li {
-  list-style: none;
-}
-
 #webtoons-container {
+    max-width: 1100px;
+    height: 5000px;
     width: 100%;
     position: relative;
 }
 
-#webtoons-content {
-    max-width: 1100px;
-    height: 5000px;
-}
-
-#container > #content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+#webtoons {
     margin: auto;
 }
 
@@ -30,9 +24,9 @@ menu, ol, ul, li {
     position:relative;
 }
 
-#webtoons > ul > li {
+#webtoons-list > li {
     float: left;
-    margin-right: 10px;
+    margin: 10px;
     position:relative;
 }
 
