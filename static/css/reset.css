@@ -34,8 +34,14 @@ body {
   line-height: 1;
 }
 
-menu, ol, ul {
+menu, ol, ul, li {
   list-style: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  outline: none;
 }
 
 blockquote, q {

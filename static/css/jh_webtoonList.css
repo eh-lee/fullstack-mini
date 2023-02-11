@@ -1,34 +1,76 @@
-#container {
+a {
+  color: black;
+  text-decoration: none;
+  outline: none;
+}
+
+menu, ol, ul, li {
+  list-style: none;
+}
+
+#webtoons-container {
     width: 100%;
     position: relative;
 }
 
-#content {
+#webtoons-content {
     max-width: 1100px;
     height: 5000px;
-    background: aquamarine;
-
 }
 
 #container > #content {
-    margin: auto;
+    position: relative;
     display: flex;
     flex-direction: column;
+    margin: auto;
 }
 
-.webtoon-list {
+#webtoons > ul {
+    width : 100%;
+    position:relative;
+}
+
+#webtoons > ul > li {
+    float: left;
+    margin-right: 10px;
+    position:relative;
+}
+
+.webtoon-box {
     width: 155px;
     height: 200px;
-    background-color: yellow;
+    background-color: white;
     border-radius: 7px;
-    box-shadow: black;
-    padding: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 10px;
 
-
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
 }
 
-.webtoon-list > img {
-    width: 150px;
+.webtoon-box > img {
+    width: 100%;
     height: 100px;
     object-fit: cover;
+    margin: auto;
+}
+
+.webtoon-box > h6 {
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.webtoon-box > span {
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.webtoon-box > p {
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.webtoon-box > *:not(img){
+    margin: 5px 0;
 }
