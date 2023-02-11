@@ -7,22 +7,23 @@ body{
     overflow-y: scroll;
 }
 .ym-modal-join{
-    position: absolute;
-    width:100%;
-    height: 100%;
+    position: fixed;
+    width:100vw;
+    height: 100vw;
     z-index: 50;
     background-color: rgba(0,0,0,0.8);
 }
 .ym-modal-contents{
     display: flex;
     width: 500px;
-    height: 400px;
+    height: 300px;
     border-radius: 20px;
     box-shadow: 0px 0px 20px white;
     background-color: white;
-    position: relative;
+    position: fixed;
     top: 50%;
-    transform: translateY(-200px);
+    left: 50%;
+    transform: translate(-250px,-150px);
     margin:auto;
     flex-direction: column;
     justify-content: center;
@@ -30,7 +31,7 @@ body{
 }
 .join-box{
     width: 80%;
-    height:250px;
+    height:auto;
     /* background-color: green; */
 }
 .rows{
@@ -130,6 +131,9 @@ body{
 .nav-contents>.contents-box{
     margin : auto 0px;
 }
+.nav-btn{
+    transform: all 0s;
+}
 .welcome{
     display: none;
     font-size: small;
@@ -167,14 +171,6 @@ header{
     transform:translateX(-100vw)
 }
 .empty-div{
-    height:300px;
     background-color: green;
-}
-footer{
-    display: flex;
-    height:50px;
-    background-color: #0d6efd;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 800px;
 }

@@ -18,20 +18,23 @@ $(document).ready(function () {
 
         document.getElementsByClassName('welcome')[0].style.display = "inline-block"
         document.getElementsByClassName('welcome')[1].style.display = "inline-block"
-        $('.welcome').style= "display : inline-block;"
+        $('.welcome').style = "display : inline-block;"
 
         $('.nav-btn').toggle('.ym-hide')
     } else if (is_logon == "false") {
     }
     document.getElementsByClassName('hd-div')[0].classList.add('move-img')
 });
+document.getElementById('btn-logo').addEventListener('click', function () {
+    window.location.reload()
+})
 
 // scroll event
-window.addEventListener('scroll', function() {
-    if(window.scrollY>=50){
+window.addEventListener('scroll', function () {
+    if (window.scrollY >= 50) {
         // document.getElementsByClassName('nav-default').classList.add('nav-fix')
         $('.nav-default').addClass('nav-fix')
-    } else if(window.scrollY<50){
+    } else if (window.scrollY < 50) {
         $('.nav-default').removeClass('nav-fix')
     }
     // console.log(this.scrollY)
@@ -45,9 +48,9 @@ document.getElementById('login').addEventListener('click', function () {
     checkUser(ID, PW)
 })
 function checkUser(id, password) {
-    if ( id =="" || password ==""){
+    if (id == "" || password == "") {
         alert("아이디/비밀번호를 입력하세요.")
-    } else{
+    } else {
         $.ajax({
             type: "POST",
             url: "/user/login",

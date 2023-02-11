@@ -15,7 +15,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-        <link href="{{ url_for('static', filename='css/ym.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/ym.css') }}" rel="stylesheet">
     <title>Team 16</title>
 </head>
 
@@ -59,10 +59,11 @@
                 <span id="close-join">닫기</span>
             </div>
         </div>
+
     </div>
     <nav class="nav-default">
         <div class="nav-contents">
-            <span class="contents-box logo">WEBTOONS</span>
+            <span class="contents-box logo" id="btn-logo">WEBTOONS</span>
             <div class="contents-box right">
                 <div class="nav-input-box">
                     <input class="nav-input" type="text" id="userID" placeholder="ID" />
@@ -80,9 +81,9 @@
         <div class="hd-div">
             <img class="hd-img" src="{{ url_for('static', filename='bg_1.jpg') }}" />
             <img class="hd-img" src="{{ url_for('static', filename='bg_2.jpg') }}" />
-        </div>        
+        </div>
     </header>
-    <footer><span>16조 : 이은형 박성동 이주희 김용민</span></footer>
+    <div class="empty-div"></div>
 </body>
 <script type="text/javascript" src="{{ url_for('static', filename='js/ym.js') }}"></script>
 
